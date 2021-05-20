@@ -2,7 +2,7 @@
 
 All posted times are **Pacific** time zone. At least one break will be provided each afternoon.
 
-#### Friday, March 12
+#### Monday, June 7th
 
 |:----------- |:------------------- |
 |**2:00 pm**  | Zoom session starts |
@@ -13,7 +13,7 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 |**4:15 pm**  | Basic data structures 1 |
 |**5:00 pm** | Zoom session ends |
 
-#### Tuesday, March 16
+#### Wednesday, June 9th
 
 |:----------- |:------------------- |
 |**2:00 pm**  | Zoom session starts |
@@ -23,7 +23,7 @@ All posted times are **Pacific** time zone. At least one break will be provided 
 |**3:45 pm**  | Functions |
 |**5:00 pm** | Zoom session ends |
 
-#### Friday, March 19
+#### Friday, June 11th
 
 |:----------- |:------------------- |
 |**2:00 pm**  | Zoom session starts |
