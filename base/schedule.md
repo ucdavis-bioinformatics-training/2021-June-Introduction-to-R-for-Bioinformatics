@@ -2,34 +2,33 @@
 
 All posted times are **Pacific** time zone. At least one break will be provided each afternoon.
 
-#### Tuesday, March 2
+#### Friday, March 12
 
 |:----------- |:------------------- |
-|**2:00 pm**  | Zoom session starts |   
-|**2:10 pm**  | Logging in |
-|**2:30 pm**  | What is the command line? |
-|**3:00 pm**  | Command line basics |
-|**3:30 pm**  | Break |
-|**3:45 pm**  | Navigating using the command line |
-|**5:00 pm** | Zoom session ends |
-
-#### Friday, March 5
-
-|:----------- |:------------------- |
-|**2:00 pm**  | Zoom session starts |   
-|**2:10 pm**  | Creating and destroying files |
-|**2:45 pm**  | Pipes and redirection |
+|**2:00 pm**  | Zoom session starts |
+|**2:10 pm**  | What is R? |
+|**2:45 pm**  | R interfaces |
 |**3:15 pm**  | Break |
-|**3:30 pm**  | Wildcards |
-|**4:15 pm**  | Manipulating files |
+|**3:30 pm**  | Basic data types |
+|**4:15 pm**  | Basic data structures 1 |
 |**5:00 pm** | Zoom session ends |
 
-#### Tuesday, March 9
+#### Tuesday, March 16
 
 |:----------- |:------------------- |
-|**2:00 pm**  | Zoom session starts |   
-|**2:10 pm**  | Symbolic links |
-|**2:40 pm**  | Stdout & Stderr |
+|**2:00 pm**  | Zoom session starts |
+|**2:10 pm**  | Basic data structures 2 |
+|**3:00 pm**  | Importing and exporting data |
+|**3:30 pm**  | Break |
+|**3:45 pm**  | Functions |
+|**5:00 pm** | Zoom session ends |
+
+#### Friday, March 19
+
+|:----------- |:------------------- |
+|**2:00 pm**  | Zoom session starts |
+|**2:10 pm**  | Basic statistics in R |
 |**3:00 pm**  | Break |
-|**3:15 pm**  | Simple shell scripts |
+|**3:15 pm**  | Simple data visualization |
+|**4:15 pm**  | R markdown and R notebooks |
 |**5:00 pm** | Zoom session ends |
