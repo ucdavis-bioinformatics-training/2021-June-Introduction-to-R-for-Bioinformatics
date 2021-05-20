@@ -1,9 +1,9 @@
 All documentation for the workshop is best viewed from the github.io pages
 
-[Documentation](https://ucdavis-bioinformatics-training.github.io/2021-March-Introduction-to-R-for-Bioinformatics/)
+[Documentation](https://ucdavis-bioinformatics-training.github.io/2021-June-Introduction-to-R-for-Bioinformatics/)
 
 Introduction to R for Bioinformatics  
-March 12, 16, and 19 from 2:00 pm to 5:00 pm  
+June 7th, 9th, and 11th from 2:00 pm to 5:00 pm  
 Organizer - Bioinformatics Core  
 Contact - UC Davis Bioinformatics Core, training.bioinformatics@ucdavis.edu
 
@@ -11,13 +11,13 @@ Get off to a good start in bioinformatics with this three-part online workshop i
 
 This workshop consists of three half-day sessions, combining lecture and exercises in a survey of the basics of R for bioinformatics. Completion of this material will allow participants to get the most out of our other experiment-centric workshops. We recommend this course for all beginners.
 
-Introduction to R for Bioinformatics is scheduled from 2:00 pm to 5:00 pm on Friday, March 12, Tuesday, March 16, and Friday, March 19.
+Introduction to R for Bioinformatics is scheduled from 2:00 pm to 5:00 pm on Monday June 7th, Wednesday June 9th, and Friday June 11th.
 
 Participants must have access to a computer with a recent version of R, and Rstudio installed, as well as a reliable internet connection.
 
 The registration fee is $300 for UC students, postdocs, staff and faculty, $450 for Non-UC academic or non-profit participants and $600 for other participants. We accept credit cards, as well as UC Davis recharge accounts, for payment. We are pleased to be able to offer three group pricing bundle options for labs with multiple registrants: 15% off registration for groups of 3-5, 25% off registration for groups of 6-10, and custom instructional packages for groups larger than 10. If you are interested in one of these pricing options, please contact us at training.bioinformatics@ucdavis.edu for a custom coupon code.
 
-Registration closes on March 10, 2021.
+Registration closes on June 4th, 2021.
 
 ### FAQ
 
@@ -40,4 +40,4 @@ If you have any questions, please don’t hesitate to contact us at training.bio
 
 ### Register
 
-[Register for Introduction to R for Bioinformatics at the Genome Center Event Registration site.](https://registration.genomecenter.ucdavis.edu/events/r_march_2021/)
+[Register for Introduction to R for Bioinformatics at the Genome Center Event Registration site.](https://registration.genomecenter.ucdavis.edu/events/r_june_2021/)
