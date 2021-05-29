@@ -80,15 +80,13 @@ Next, we have the **<-** (arrow) operator. This symbol is basically an assignmen
 
 **read.table** is a **function**. A function is a command that is invoked (called) to do some calculation, manipulation, reformatting, etc. on data. It usually returns some value. If a function is called without assigning the return value to a variable, then R prints the return value to the screen. 
 
-A function typically has **parameters**, which are inputs to the function. These parameters are specified within the parentheses after the function name. In our case, the parameters are **file**, **sep**, and **header**. And the values for those parameters are the value that comes after the equals sign for each of them. I.e., the value for "file" is "https://...", the value for "sep" is "\t", and the value for "header" is "T".
+A function typically has **parameters**, which are inputs to the function. These parameters are specified within the parentheses after the function name. In our case, the parameters are **file**, **sep**, and **header**. And the values for those parameters are the value that comes after the equals sign for each of them. I.e., the value for "file" is "https://...", the value for "sep" is "\t", and the value for "header" is "T". Notice that the file and sep values are in quotes... this is because when you are specifying characters (known as strings), you have to put them in quotes. The "\t" is the way you indicate the **tab** character. I.e., the separator between the fields for each line in this file is the tab character. Finally, the **T** value for header means **TRUE**, a boolean (true/false) value. I.e., this file has a header line which should be used as the names of each of the columns.
 
+Functions can have many parameters, but you only have to specify the required ones and those you are changing from the defaults. In order to see the full description and parameter list of a function, type a **?** followed by the function name. In Rstudio, you can also just search in the "Help" tab.
 
-To check what type of object *data1* is in and take a look at the beginning part of the data.
 ```{r}
-is.data.frame(data1)
-head(data1)
+?read.table
 ```
-
 
 ##### Depending on the format of the file, several variants of read.table() are available to make reading a file easier.
 
@@ -102,28 +100,109 @@ head(data1)
 
 <br>
 
-```{r}
-# We are going to read a file over the internet by providing the url of the file.
-data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.csv", stringsAsFactors=F)
-
-# To look at the file:
-head(data2)
-```
-
-<br>
-
-##### R base function write.table() can be used to export data to a file.
-
-```{r}
-# To write to a file called "output.txt" in your current working directory.
-write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col.names=T)
-```
-
 It is also possible to export data to a csv file.
 
 write.csv()
 
 write.csv2()
+
+
+Data Frames
+------------
+
+Let's take a look at the data:
+
+```{r}
+metadata
+```
+
+When you just type in the name of a variable and press Enter, it prints the current value of the variable. To get just the first few lines, use the **head** function:
+
+```{r}
+head(metadata)
+```
+
+This gives us the first 6 lines of the data frame and once it reaches the edge of the screen, it prints the next columns beneath the previous columns. Notice that the numbering of the rows on the left hand side is 1 through 6 for all the columns. So, what are we looking at? This is a **data frame**. It is a structure (also known as an object) that holds multiple types of data. In this case, we have character data, numeric data, date data, boolean data, etc. Note that the column names are taken from the first line of the file, but any non-alphabet (and period) characters are changed to periods.
+
+There are multiple ways to access different parts of a data frame. One way is using indices. For example:
+
+```{r}
+metadata[1,2]
+```
+
+This gives us the value in the first row, 2nd column. We can also get all the values in a row (or column) by not specifying one of the indices:
+
+```{r}
+metadata[,3]
+```
+
+This gives us the values for every row, column 3.
+
+```{r}
+metadata[4,]
+```
+
+This gives us the values for row 4, every column. Another way to access the columns is by using the **$** operator:
+
+```{r}
+metadata$Breed
+```
+
+
+Basic data types
+-----------------
+
+There are 3 basic data types in R: logical (boolean), numeric, and character.
+
+```{r}
+status <- TRUE
+status
+```
+
+```{r}
+max.weight <- 200
+max.weight
+```
+
+```{r}
+sample <- "Glioma_1"
+sample
+```
+
+
+You can usee **class* to find out the type of a variable:
+
+```{r}
+class(status)
+```
+
+```{r}
+class(max.weight)
+```
+
+```{r}
+class(sample)
+```
+
+
+You can also convert one type to another:
+
+```{r}
+as.character(max.weight)
+```
+
+```{r}
+as.numeric(status)
+```
+
+And add certain types together:
+
+```{r}
+status + max.weight
+```
+
+
+
 
 
 
