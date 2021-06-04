@@ -21,8 +21,8 @@ navigation:
     url: base/cheatSheetIndex
 
   - heading: Introduction to R
-  - title: Introduction to R
-    url: R/Intro2R_main
+  - title: Introduction to R Day 1
+    url: R/embed_day1
   - title: Challenge Solutions
     url: R/challenge_solutions
 
