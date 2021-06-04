@@ -24,6 +24,246 @@ pre, code {
 
 
 
+
+R and RStudio
+========================================================
+
+### What is R?
+[R](http://r-project.org/) is a language and environment for statistical computing and graphics developed in 1993. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modeling, statistical tests, time series analysis, classification, clustering, ...), and is highly extensible, meaning that the user community can write new R tools. It is a GNU project (Free and Open Source).
+
+The R language has its roots in the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.
+
+Some of R's strengths:
+
+* The ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control. Such as examples like the following (extracted from http://web.stanford.edu/class/bios221/book/Chap-Graphics.html):
+
+<img src="chap3-rgraphics-heatmap-1.png" width="32%" /><img src="chap3-rgraphics-darned1-1.png" width="32%" /><img src="chap3-rgraphics-twodsp4-1.png" width="32%" />
+
+* It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.
+* R can be extended (easily) via packages.
+* R has its own LaTeX-like documentation format, which is used to supply comprehensive documentation, both on-line in a number of formats and in hardcopy.
+* It has a vast community both in academia and in business.
+* It's FREE!   
+
+### The R environment
+R is an integrated suite of software facilities for data manipulation, calculation and graphical display. It includes
+
+* an effective data handling and storage facility,
+* a suite of operators for calculations on arrays, in particular matrices,
+* a large, coherent, integrated collection of intermediate tools for data analysis,
+* graphical facilities for data analysis and display either on-screen or on hardcopy, and
+* a well-developed, and effective programming language which includes conditionals, loops, user-defined recursive functions and input and output facilities.
+
+The term "environment" is intended to characterize it as a fully planned and coherent system, rather than an incremental accretion of very specific and inflexible tools, as is frequently the case with other data analysis software.
+
+R, like S, is designed around a true computer language, and it allows users to add additional functionality by defining new functions. Much of the system is itself written in the R dialect of S, which makes it easy for users to follow the algorithmic choices made. For computationally-intensive tasks, C, C++ and Fortran code can be linked and called at run time. Advanced users can write C code to manipulate R objects directly.
+
+Many users think of R as a statistics system. The R group prefers to think of it of an environment within which statistical techniques are implemented.   
+
+### The R Homepage
+The R homepage has a wealth of information on it,
+
+[R-project.org](http://r-project.org/)
+
+On the homepage you can:
+
+* Learn more about R
+* Download R
+* Get Documentation (official and user supplied)
+* Get access to CRAN 'Comprehensive R archival network'
+
+### Interface for R
+
+There are many ways one can interface with R language. Here are a few popular ones:
+
+* [RStudio](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Intro2R/rstudio.png)
+* [RGui](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Intro2R/rgui.png)
+* Jupyter and R notebooks
+* text editors, such as vi(m), Emacs...
+
+
+### RStudio
+
+[RStudio](http://rstudio.com/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlab's IDE.
+
+RStudio has many features:
+
+* syntax highlighting
+* code completion
+* smart indentation
+* "Projects"
+* workspace browser and data viewer
+* embedded plots
+* Markdown notebooks, Sweave authoring and knitr with one click pdf or html
+* runs on all platforms and over the web
+* etc. etc. etc.
+
+RStudio and its team have contributed to many R packages.[13] These include:
+
+* Tidyverse – R packages for data science, including ggplot2, dplyr, tidyr, and purrr
+* Shiny – An interactive web technology
+* RMarkdown – Insert R code into markdown documents
+* knitr – Dynamic reports combining R, TeX, Markdown & HTML
+* packrat – Package dependency tool
+* devtools – Package development tool
+
+RStudio Cheat Sheets: [rstudio-ide.pdf](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf)
+
+---
+
+Programming fundamentals
+====================================================
+
+
+There are three concepts that are essential in any programming language:
+
+* <font color='purple'>VARIABLES</font>
+
+A variable is a named storage. Creating a variable is to reserve some space in memory. In R, the name of a variable can have letters, numbers, dot and underscore. However, a valid variable name cannot start with a underscore or a number, or start with a dot that is followed by a number.
+
+
+* <font color='purple'>FUNCTIONS</font>
+
+A function is a block of organized, reusable code that is used to perform a set of predefined operations. A function may take zero or more parameters and return a result.
+
+<img src="./func.png" width="15%" style="display: block; margin: auto;" />
+
+
+The way to use a function in R is:
+
+**function.name(parameter1=value1, ...)**
+
+In R, to get help information on a funciton, one may use the command: 
+
+**?function.name**
+
+
+* <font color='purple'>OPERATIONS</font>
+
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Assignment Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> &lt;-, = </td>
+   <td style="text-align:center;"> Assignment </td>
+  </tr>
+</tbody>
+</table>
+
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Arithmetic Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> + </td>
+   <td style="text-align:center;"> Addition </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> - </td>
+   <td style="text-align:center;"> Subtraction </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> * </td>
+   <td style="text-align:center;"> Multiplication </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> / </td>
+   <td style="text-align:center;"> Division </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> ^ </td>
+   <td style="text-align:center;"> Exponent </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> %% </td>
+   <td style="text-align:center;"> Modulus </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> %/% </td>
+   <td style="text-align:center;"> Integer Division </td>
+  </tr>
+</tbody>
+</table>
+
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Relational Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> &lt; </td>
+   <td style="text-align:center;"> Less than </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &gt; </td>
+   <td style="text-align:center;"> Greater than </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &lt;= </td>
+   <td style="text-align:center;"> Less than or equal to </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &gt;= </td>
+   <td style="text-align:center;"> Greater than or equal to </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> == </td>
+   <td style="text-align:center;"> Equal to </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> != </td>
+   <td style="text-align:center;"> Not equal to </td>
+  </tr>
+</tbody>
+</table>
+
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Logical Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> ! </td>
+   <td style="text-align:center;"> Logical NOT </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &amp; </td>
+   <td style="text-align:center;"> Element-wise logical AND </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &amp;&amp; </td>
+   <td style="text-align:center;"> Logical AND </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> | </td>
+   <td style="text-align:center;"> Element-wise logical OR </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> || </td>
+   <td style="text-align:center;"> Logical OR </td>
+  </tr>
+</tbody>
+</table>
+
 ---
 
 
