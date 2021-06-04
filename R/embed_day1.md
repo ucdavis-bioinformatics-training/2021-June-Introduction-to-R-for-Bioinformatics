@@ -6,7 +6,7 @@ output:
 
 <script src="../assets/js/quiz.js"></script>
 
-```{css echo=FALSE}
+<style type="text/css">
 .colsel {
 background-color: lightyellow;
 }
@@ -15,30 +15,14 @@ pre, code {
   white-space:pre !important;
   overflow-x:scroll auto
 }
-```
+</style>
 
 
-```{r echo=FALSE}
-library(knitr)
-colFmt = function(x,color){
-  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
-  if(outputFormat == 'latex')
-    paste("\\textcolor{",color,"}{",x,"}",sep="")
-  else if(outputFormat == 'html')
-    paste("<font color='",color,"'>",x,"</font>",sep="")
-  else
-    x
-}
-```
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(class.source = "colsel", echo=TRUE)
-```
 
-```{r echo=F, include=FALSE}
-library(dplyr)
-library(kableExtra)
-```
+
+
+
 
 ---
 
@@ -79,76 +63,172 @@ Topic 1. Basic data types in R
 
 ##### Examples of numeric values.
 
-```{r}
+
+```{.r .colsel}
 # assign number 150 to variable a.
 a <- 150
 a
+```
+
+```
+## [1] 150
+```
+
+```{.r .colsel}
 # assign a number in scientific format to variable b.
 b <- 3e-2
 b
+```
+
+```
+## [1] 0.03
 ```
 <br>
 
 ##### Examples of character values.
 
-```{r}
+
+```{.r .colsel}
 # assign a string "BRCA1" to variable gene
 gene <- "BRCA1"
 gene
+```
+
+```
+## [1] "BRCA1"
+```
+
+```{.r .colsel}
 # assign a string "Hello World" to variable hello
 hello <- "Hello World"
 hello
+```
+
+```
+## [1] "Hello World"
 ```
 <br>
 
 ##### Examples of logical values.
 
-```{r}
+
+```{.r .colsel}
 # assign logical value "TRUE" to variable brca1_expressed
 brca1_expressed <- TRUE
 brca1_expressed
+```
+
+```
+## [1] TRUE
+```
+
+```{.r .colsel}
 # assign logical value "FALSE" to variable her2_expressed
 her2_expressed <- FALSE
 her2_expressed
+```
+
+```
+## [1] FALSE
+```
+
+```{.r .colsel}
 # assign logical value to a variable by logical operation
 her2_expression_level <- 0
 her2_expressed <- her2_expression_level > 0
 her2_expressed
 ```
+
+```
+## [1] FALSE
+```
 <br>
 
 ##### To find out the type of variable.
 
-```{r}
+
+```{.r .colsel}
 class(her2_expressed)
+```
+
+```
+## [1] "logical"
+```
+
+```{.r .colsel}
 # To check whether the variable is a specific type
 is.numeric(gene)
-is.numeric(a)
-is.character(gene)
+```
 
+```
+## [1] FALSE
+```
+
+```{.r .colsel}
+is.numeric(a)
+```
+
+```
+## [1] TRUE
+```
+
+```{.r .colsel}
+is.character(gene)
+```
+
+```
+## [1] TRUE
 ```
 <br>
 
-##### In the case that one compares two different classes of data, the coersion rule in R is `r colFmt("logical -> integer -> numeric -> complex -> character", 'red')` . The following is an example of converting a numeric variable to character.
+##### In the case that one compares two different classes of data, the coersion rule in R is <font color='red'>logical -> integer -> numeric -> complex -> character</font> . The following is an example of converting a numeric variable to character.
 
 
-```{r}
+
+```{.r .colsel}
 b
+```
+
+```
+## [1] 0.03
+```
+
+```{.r .colsel}
 as.character(b)
+```
+
+```
+## [1] "0.03"
 ```
 <br>
 
 What happens when one converts a logical variable to numeric?
 
-```{r}
+
+```{.r .colsel}
 # recall her2_expressed
 her2_expressed
+```
 
+```
+## [1] FALSE
+```
+
+```{.r .colsel}
 # conversion
 as.numeric(her2_expressed)
+```
 
+```
+## [1] 0
+```
+
+```{.r .colsel}
 her2_expressed + 1
+```
 
+```
+## [1] 1
 ```
 <br>
 
@@ -209,92 +289,183 @@ submitButton1.addEventListener('click', function() {showResults(myQuestions1, qu
 Topic 2. Basic data structures in R
 ====================================================
 
-```{r echo=FALSE}
-
-kable(data.frame(Homogeneous=c("Atomic vector", "Matrix", "Array"), Heterogeneous=c("List", "Data frame", ""), row.names=c("1d", "2d", "Nd"), stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options="striped", full_width=F, position="center", font_size=18)
-```
+<table class="table table-striped" style="font-size: 18px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Homogeneous </th>
+   <th style="text-align:center;"> Heterogeneous </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1d </td>
+   <td style="text-align:center;"> Atomic vector </td>
+   <td style="text-align:center;"> List </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2d </td>
+   <td style="text-align:center;"> Matrix </td>
+   <td style="text-align:center;"> Data frame </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nd </td>
+   <td style="text-align:center;"> Array </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+</tbody>
+</table>
 <br>
 
 
 #### Atomic vectors: an atomic vector is a combination of multiple values(numeric, character or logical) in the same object. An atomic vector is created using the function c().
 
-```{r}
+
+```{.r .colsel}
 gene_names <- c("ESR1", "p53", "PI3K", "BRCA1", "EGFR")
 gene_names
+```
 
+```
+## [1] "ESR1"  "p53"   "PI3K"  "BRCA1" "EGFR"
+```
+
+```{.r .colsel}
 gene_expression <- c(0, 100, 50, 200, 80)
 gene_expression
+```
+
+```
+## [1]   0 100  50 200  80
 ```
 <br>
 
 ##### One can give names to the elements of an atomic vector.
-```{r}
+
+```{.r .colsel}
 # assign names to a vector by specifying them
 names(gene_expression) <- c("ESR1", "p53", "PI3K", "BRCA1", "EGFR")
 gene_expression
+```
 
+```
+##  ESR1   p53  PI3K BRCA1  EGFR 
+##     0   100    50   200    80
+```
+
+```{.r .colsel}
 # assign names to a vector using another vector
 names(gene_expression) <- gene_names
 gene_expression
 ```
+
+```
+##  ESR1   p53  PI3K BRCA1  EGFR 
+##     0   100    50   200    80
+```
 <br>
 
 ##### Or One may create a vector with named elements from scratch.
-```{r}
+
+```{.r .colsel}
 gene_expression <- c(ESR1=0, p53=100, PI3K=50, BRCA1=200, EGFR=80)
 gene_expression
+```
+
+```
+##  ESR1   p53  PI3K BRCA1  EGFR 
+##     0   100    50   200    80
 ```
 <br>
 
 ##### To find out the length of a vector:
-```{r}
+
+```{.r .colsel}
 length(gene_expression)
 ```
 
+```
+## [1] 5
+```
+
    
-##### `r colFmt("NOTE: a vector can only hold elements of the same type. If there are a mixture of data types, they will be coerced according to the coersion rule mentioned earlier in this documentation.", 'red')`  
+##### <font color='red'>NOTE: a vector can only hold elements of the same type. If there are a mixture of data types, they will be coerced according to the coersion rule mentioned earlier in this documentation.</font>  
 
 <br>
 
 #### Factors: a factor is a special vector. It stores categorical data, which are important in statistical modeling and can only take on a limited number of pre-defined values. The function factor() can be used to create a factor.
 
-```{r}
+
+```{.r .colsel}
 disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"))
 disease_stage
+```
+
+```
+## [1] Stage1 Stage2 Stage2 Stage3 Stage1 Stage4
+## Levels: Stage1 Stage2 Stage3 Stage4
 ```
 <br>
 
 ##### In R, categories of the data are stored as factor levels. The function levels() can be used to access the factor levels.
 
-```{r}
+
+```{.r .colsel}
 levels(disease_stage)
+```
+
+```
+## [1] "Stage1" "Stage2" "Stage3" "Stage4"
 ```
 
 ##### A function to compactly display the internal structure of an R object is str(). Please use str() to display the internal structure of the object we just created *disease_stage*. It shows that _disease_stage_ is a factor with four levels: "Stage1", "Stage2", "Stage3", etc... The integer numbers after the colon shows that these levels are encoded under the hood by integer values: the first level is 1, the second level is 2, and so on. Basically, when _factor_ function is called, R first scan through the vector to determine how many different categories there are, then it converts the character vector to a vector of integer values, with each integer value labeled with a category.
 
 
-```{r}
+
+```{.r .colsel}
 str(disease_stage)
+```
+
+```
+##  Factor w/ 4 levels "Stage1","Stage2",..: 1 2 2 3 1 4
 ```
 
 
 ##### By default, R infers the factor levels by ordering the unique elements in a factor alphanumerically. One may specifically define the factor levels at the creation of the factor.
 
 
-```{r}
+
+```{.r .colsel}
 disease_stage <- factor(c("Stage1", "Stage2", "Stage2", "Stage3", "Stage1", "Stage4"), levels=c("Stage2", "Stage1", "Stage3", "Stage4"))
 # The encoding for levels are different from above.
 str(disease_stage)
 ```
 
+```
+##  Factor w/ 4 levels "Stage2","Stage1",..: 2 1 1 3 2 4
+```
+
 If you want to know the number of individuals at each levels, there are two functions: _summary_ and _table_.
 
-```{r}
+
+```{.r .colsel}
 summary(disease_stage)
 ```
 
-```{r}
+```
+## Stage2 Stage1 Stage3 Stage4 
+##      2      2      1      1
+```
+
+
+```{.r .colsel}
 table(disease_stage)
+```
+
+```
+## disease_stage
+## Stage2 Stage1 Stage3 Stage4 
+##      2      2      1      1
 ```
 
 
@@ -352,55 +523,150 @@ submitButton2.addEventListener('click', function() {showResults(myQuestions2, qu
 
 #### Matrices: A matrix is like an Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
 
-```{r}
+
+```{.r .colsel}
 col1 <- c(1,3,8,9)
 col2 <- c(2,18,27,10)
 col3 <- c(8,37,267,19)
 
 my_matrix <- cbind(col1, col2, col3)
 my_matrix
+```
 
+```
+##      col1 col2 col3
+## [1,]    1    2    8
+## [2,]    3   18   37
+## [3,]    8   27  267
+## [4,]    9   10   19
 ```
 
 ##### One other way to create a matrix is to use *matrix()* function.
 
-```{r}
+
+```{.r .colsel}
 nums <- c(col1, col2, col3)
 nums
+```
+
+```
+##  [1]   1   3   8   9   2  18  27  10   8  37 267  19
+```
+
+```{.r .colsel}
 matrix(nums, ncol=2)
 ```
 
-```{r}
+```
+##      [,1] [,2]
+## [1,]    1   27
+## [2,]    3   10
+## [3,]    8    8
+## [4,]    9   37
+## [5,]    2  267
+## [6,]   18   19
+```
+
+
+```{.r .colsel}
 rownames(my_matrix) <- c("row1", "row2", "row3", "row4")
 my_matrix
+```
 
+```
+##      col1 col2 col3
+## row1    1    2    8
+## row2    3   18   37
+## row3    8   27  267
+## row4    9   10   19
+```
+
+```{.r .colsel}
 t(my_matrix)
+```
+
+```
+##      row1 row2 row3 row4
+## col1    1    3    8    9
+## col2    2   18   27   10
+## col3    8   37  267   19
 ```
 
 ##### To find out the dimension of a matrix:
 
-```{r}
+
+```{.r .colsel}
 ncol(my_matrix)
+```
+
+```
+## [1] 3
+```
+
+```{.r .colsel}
 nrow(my_matrix)
+```
+
+```
+## [1] 4
+```
+
+```{.r .colsel}
 dim(my_matrix)
+```
+
+```
+## [1] 4 3
 ```
 
 
 ##### Calculations with numeric matrices.
 
-```{r}
+
+```{.r .colsel}
 my_matrix * 3
+```
+
+```
+##      col1 col2 col3
+## row1    3    6   24
+## row2    9   54  111
+## row3   24   81  801
+## row4   27   30   57
+```
+
+```{.r .colsel}
 log10(my_matrix)
 ```
 
+```
+##           col1     col2     col3
+## row1 0.0000000 0.301030 0.903090
+## row2 0.4771213 1.255273 1.568202
+## row3 0.9030900 1.431364 2.426511
+## row4 0.9542425 1.000000 1.278754
+```
+
 Total of each row.
-```{r}
+
+```{.r .colsel}
 rowSums(my_matrix)
 ```
 
+```
+## row1 row2 row3 row4 
+##   11   58  302   38
+```
+
 Total of each column.
-```{r}
+
+```{.r .colsel}
 colSums(my_matrix)
+```
+
+```
+## col1 col2 col3 
+##   21   57  331
 ```
 
 ##### There is a data structure _Array_ in R, that holds multi-dimensional (d > 2) data and is a generalized version of a matrix. *Matrix* is used much more commonly than *Array*, therefore we are not going to talk about *Array* here.
@@ -410,7 +676,8 @@ colSums(my_matrix)
 
 ##### A data frame can be created using the function data.frame().
 
-```{r}
+
+```{.r .colsel}
 # creating a data frame using pre-defined vectors
 patients_name=c("Patient1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6")
 Family_history=c("Y", "N", "Y", "N", "Y", "Y")
@@ -419,67 +686,188 @@ meta.data <- data.frame(patients_name=patients_name, disease_stage=disease_stage
 meta.data
 ```
 
+```
+##   patients_name disease_stage Family_history patients_age
+## 1      Patient1        Stage1              Y           31
+## 2      Patient2        Stage2              N           40
+## 3      Patient3        Stage2              Y           39
+## 4      Patient4        Stage3              N           50
+## 5      Patient5        Stage1              Y           45
+## 6      Patient6        Stage4              Y           65
+```
+
 ###### To check whether a data is a data frame, use the function is.data.frame().
 
-```{r}
+
+```{.r .colsel}
 is.data.frame(meta.data)
 ```
 
-```{r}
+```
+## [1] TRUE
+```
+
+
+```{.r .colsel}
 is.data.frame(my_matrix)
+```
+
+```
+## [1] FALSE
 ```
 
 ###### One can convert a matrix object to a data frame using the function as.data.frame().
 
-```{r}
+
+```{.r .colsel}
 class(my_matrix)
 ```
 
-```{r}
+```
+## [1] "matrix" "array"
+```
+
+
+```{.r .colsel}
 my_data <- as.data.frame(my_matrix)
 class(my_data)
 ```
 
+```
+## [1] "data.frame"
+```
+
 ##### A data frame can be transposed in the similar way as a matrix. However, the result of transposing a data frame might not be a data frame anymore.
 
-```{r}
+
+```{.r .colsel}
 my_data
 ```
 
-```{r}
+```
+##      col1 col2 col3
+## row1    1    2    8
+## row2    3   18   37
+## row3    8   27  267
+## row4    9   10   19
+```
+
+
+```{.r .colsel}
 t(my_data)
+```
+
+```
+##      row1 row2 row3 row4
+## col1    1    3    8    9
+## col2    2   18   27   10
+## col3    8   37  267   19
 ```
 
 ##### A data frame can be extended.
 
-```{r}
+
+```{.r .colsel}
 # add a column that has the information on harmful mutations in BRCA1/BRCA2 genes for each patient.
 meta.data
+```
+
+```
+##   patients_name disease_stage Family_history patients_age
+## 1      Patient1        Stage1              Y           31
+## 2      Patient2        Stage2              N           40
+## 3      Patient3        Stage2              Y           39
+## 4      Patient4        Stage3              N           50
+## 5      Patient5        Stage1              Y           45
+## 6      Patient6        Stage4              Y           65
+```
+
+```{.r .colsel}
 meta.data$BRCA <- c("YES", "NO", "YES", "YES", "YES", "NO")
 meta.data
 ```
 
+```
+##   patients_name disease_stage Family_history patients_age BRCA
+## 1      Patient1        Stage1              Y           31  YES
+## 2      Patient2        Stage2              N           40   NO
+## 3      Patient3        Stage2              Y           39  YES
+## 4      Patient4        Stage3              N           50  YES
+## 5      Patient5        Stage1              Y           45  YES
+## 6      Patient6        Stage4              Y           65   NO
+```
+
 ##### A data frame can also be extended using the functions cbind() and rbind(), for adding columns and rows respectively. When using cbind(), the number of values in the new column must match the number of rows in the data frame. When using rbind(), the two data frames must have the same variables/columns.
 
-```{r}
+
+```{.r .colsel}
 # add a column that has the information on the racial information for each patient.
 cbind(meta.data, Race=c("AJ", "AS", "AA", "NE", "NE", "AS"))
+```
+
+```
+##   patients_name disease_stage Family_history patients_age BRCA Race
+## 1      Patient1        Stage1              Y           31  YES   AJ
+## 2      Patient2        Stage2              N           40   NO   AS
+## 3      Patient3        Stage2              Y           39  YES   AA
+## 4      Patient4        Stage3              N           50  YES   NE
+## 5      Patient5        Stage1              Y           45  YES   NE
+## 6      Patient6        Stage4              Y           65   NO   AS
+```
+
+```{.r .colsel}
 # rbind can be used to add more rows to a data frame.
 rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="S4", Family_history="Y", patients_age=48, BRCA="YES"))
 ```
 
+```
+##   patients_name disease_stage Family_history patients_age BRCA
+## 1      Patient1        Stage1              Y           31  YES
+## 2      Patient2        Stage2              N           40   NO
+## 3      Patient3        Stage2              Y           39  YES
+## 4      Patient4        Stage3              N           50  YES
+## 5      Patient5        Stage1              Y           45  YES
+## 6      Patient6        Stage4              Y           65   NO
+## 7      Patient7            S4              Y           48  YES
+```
+
 ##### One may use the function *merge* to merge two data frames horizontally, based on one or more common key variables.
 
-```{r}
+
+```{.r .colsel}
 expression.data <- data.frame(patients_name=c("Patient3", "Patient4", "Patient5", "Patient1", "Patient2", "Patient6"), EGFR=c(10, 472, 103784, 1782, 187, 18289), TP53=c(16493, 72, 8193, 1849, 173894, 1482))
 expression.data
+```
+
+```
+##   patients_name   EGFR   TP53
+## 1      Patient3     10  16493
+## 2      Patient4    472     72
+## 3      Patient5 103784   8193
+## 4      Patient1   1782   1849
+## 5      Patient2    187 173894
+## 6      Patient6  18289   1482
+```
+
+```{.r .colsel}
 md2 <- merge(meta.data, expression.data, by="patients_name")
 md2
 ```
 
+```
+##   patients_name disease_stage Family_history patients_age BRCA   EGFR   TP53
+## 1      Patient1        Stage1              Y           31  YES   1782   1849
+## 2      Patient2        Stage2              N           40   NO    187 173894
+## 3      Patient3        Stage2              Y           39  YES     10  16493
+## 4      Patient4        Stage3              N           50  YES    472     72
+## 5      Patient5        Stage1              Y           45  YES 103784   8193
+## 6      Patient6        Stage4              Y           65   NO  18289   1482
+```
+
 
 Save your workspace to a file so we can load it for day 2:
-```{r}
+
+```{.r .colsel}
 save.image("day1.RData")
 ```
 
