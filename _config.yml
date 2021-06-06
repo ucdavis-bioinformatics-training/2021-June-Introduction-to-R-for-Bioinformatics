@@ -23,8 +23,10 @@ navigation:
   - heading: Introduction to R
   - title: Introduction to R Day 1
     url: R/embed_day1
-  - title: Challenge Solutions
-    url: R/challenge_solutions
+  - title: Introduction to R Day 2
+    url: R/embed_day2
+  - title: Introduction to R Day 3
+    url: R/embed_day3
 
   - heading: ETC
   - title: Closing thoughts
