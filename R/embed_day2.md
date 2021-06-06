@@ -6,7 +6,7 @@ output:
 
 <script src="../assets/js/quiz.js"></script>
 
-```{css echo=FALSE}
+<style type="text/css">
 .colsel {
 background-color: lightyellow;
 }
@@ -15,35 +15,20 @@ pre, code {
   white-space:pre !important;
   overflow-x:scroll auto
 }
-```
+</style>
 
 
-```{r echo=FALSE}
-library(knitr)
-colFmt = function(x,color){
-  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
-  if(outputFormat == 'latex')
-    paste("\\textcolor{",color,"}{",x,"}",sep="")
-  else if(outputFormat == 'html')
-    paste("<font color='",color,"'>",x,"</font>",sep="")
-  else
-    x
-}
-```
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(class.source = "colsel", echo=TRUE)
-```
 
-```{r echo=F, include=FALSE}
-library(dplyr)
-library(kableExtra)
-```
+
+
+
 
 ---
 
 Load your day 1 workspace data:
-```{r}
+
+```{.r .colsel}
 load("day1.RData")
 ```
 
@@ -52,25 +37,72 @@ load("day1.RData")
 
 ##### A list is constructed using the function list().
 
-```{r}
+
+```{.r .colsel}
 my_list <- list(1:5, "a", c(TRUE, FALSE, FALSE), c(3.2, 103.0, 82.3))
 my_list
+```
+
+```
+## [[1]]
+## [1] 1 2 3 4 5
+## 
+## [[2]]
+## [1] "a"
+## 
+## [[3]]
+## [1]  TRUE FALSE FALSE
+## 
+## [[4]]
+## [1]   3.2 103.0  82.3
+```
+
+```{.r .colsel}
 str(my_list)
+```
+
+```
+## List of 4
+##  $ : int [1:5] 1 2 3 4 5
+##  $ : chr "a"
+##  $ : logi [1:3] TRUE FALSE FALSE
+##  $ : num [1:3] 3.2 103 82.3
 ```
 
 ##### One could construct a list by giving names to elements.
 
-```{r}
+
+```{.r .colsel}
 my_list <- list(Ranking=1:5, ID="a", Test=c(TRUE, FALSE, FALSE), Score=c(3.2, 103.0, 82.3))
 
 # display the names of elements in the list using the function *names*, or *str*. Compare the output of *str* with the above results to see the difference.
 names(my_list)
+```
+
+```
+## [1] "Ranking" "ID"      "Test"    "Score"
+```
+
+```{.r .colsel}
 str(my_list)
 ```
 
-```{r}
+```
+## List of 4
+##  $ Ranking: int [1:5] 1 2 3 4 5
+##  $ ID     : chr "a"
+##  $ Test   : logi [1:3] TRUE FALSE FALSE
+##  $ Score  : num [1:3] 3.2 103 82.3
+```
+
+
+```{.r .colsel}
 # number of elements in the list
 length(my_list)
+```
+
+```
+## [1] 4
 ```
 
 #### Subsetting data
@@ -79,96 +111,210 @@ length(my_list)
 
 ##### First, we are going to talk about subsetting data using [, which is the most commonly used operator. We will start by looking at vectors and talk about four ways to subset a vector.
 
-* `r colFmt("**Positive integers** return elements at the specified positions", 'purple')`
+* <font color='purple'>**Positive integers** return elements at the specified positions</font>
 
-```{r}
+
+```{.r .colsel}
 # first to recall what are stored in gene_names
 gene_names
+```
+
+```
+## [1] "ESR1"  "p53"   "PI3K"  "BRCA1" "EGFR"
+```
+
+```{.r .colsel}
 # obtain the first and the third elements
 gene_names[c(1,3)]
 ```
 
+```
+## [1] "ESR1" "PI3K"
+```
+
 R uses 1 based indexing, meaning the first element is at the position 1, not at position 0.
 
-* `r colFmt("**Negative integers** omit elements at the specified positions", 'purple')`
+* <font color='purple'>**Negative integers** omit elements at the specified positions</font>
 
-```{r}
+
+```{.r .colsel}
 gene_names[-c(1,3)]
+```
+
+```
+## [1] "p53"   "BRCA1" "EGFR"
 ```
 
 One may not mixed positive and negative integers in one single subset operation.
 
-```{r error=TRUE}
+
+```{.r .colsel}
 # The following command will produce an error.
 gene_names[c(-1, 2)]
 ```
 
-* `r colFmt("**Logical vectors** select elements where the corresponding logical value is TRUE", 'purple')`, This is very useful because one may write the expression that creates the logical vector.
+```
+## Error in gene_names[c(-1, 2)]: only 0's may be mixed with negative subscripts
+```
 
-```{r}
+* <font color='purple'>**Logical vectors** select elements where the corresponding logical value is TRUE</font>, This is very useful because one may write the expression that creates the logical vector.
+
+
+```{.r .colsel}
 gene_names[c(TRUE, FALSE, TRUE, FALSE, FALSE)]
+```
+
+```
+## [1] "ESR1" "PI3K"
 ```
 
 Recall that we have created one vector called *gene_expression*. Let's assume that *gene_expression* stores the expression values correspond to the genes in *gene_names*. Then we may subset the genes based on expression values.
 
-```{r}
-gene_expression
 
+```{.r .colsel}
+gene_expression
+```
+
+```
+##  ESR1   p53  PI3K BRCA1  EGFR 
+##     0   100    50   200    80
+```
+
+```{.r .colsel}
 gene_names[gene_expression > 50]
+```
+
+```
+## [1] "p53"   "BRCA1" "EGFR"
 ```
 
 If the logical vector is shorter in length than the data vector that we want to subset, then it will be recycled to be the same length as the data vector.
 
-```{r}
+
+```{.r .colsel}
 gene_names[c(TRUE, FALSE)]
+```
+
+```
+## [1] "ESR1" "PI3K" "EGFR"
 ```
 
 If the logical vector has "NA" in it, the corresponding value will be "NA" in the output. "NA" in R is a symbol for missing value.
 
-```{r}
+
+```{.r .colsel}
 gene_names[c(TRUE, NA, FALSE, TRUE, NA)]
 ```
 
-* `r colFmt("**Character vectors** return elements with matching names, when the vector is named.", 'purple')`
+```
+## [1] "ESR1"  NA      "BRCA1" NA
+```
 
-```{r}
+* <font color='purple'>**Character vectors** return elements with matching names, when the vector is named.</font>
+
+
+```{.r .colsel}
 gene_expression
+```
+
+```
+##  ESR1   p53  PI3K BRCA1  EGFR 
+##     0   100    50   200    80
+```
+
+```{.r .colsel}
 gene_expression[c("ESR1", "p53")]
 ```
 
-* `r colFmt("**Nothing** returns the original vector", 'purple')`, This is more useful for matrices, data frames than for vectors.
+```
+## ESR1  p53 
+##    0  100
+```
 
-```{r}
+* <font color='purple'>**Nothing** returns the original vector</font>, This is more useful for matrices, data frames than for vectors.
+
+
+```{.r .colsel}
 gene_names[]
+```
+
+```
+## [1] "ESR1"  "p53"   "PI3K"  "BRCA1" "EGFR"
 ```
 
 <br>
 
 ##### Subsetting a list works in the same way as subsetting an atomic vector. Using [ will always return a list.
 
-```{r}
+
+```{.r .colsel}
 my_list[1]
+```
+
+```
+## $Ranking
+## [1] 1 2 3 4 5
 ```
 <br>
 
-##### Subsetting a matrix can be done by simply generalizing the one dimension subsetting: one may supply a one dimension index for each dimension of the matrix. `r colFmt("Blank/Nothing subsetting is now useful in keeping all rows or all columns.", 'red')`
+##### Subsetting a matrix can be done by simply generalizing the one dimension subsetting: one may supply a one dimension index for each dimension of the matrix. <font color='red'>Blank/Nothing subsetting is now useful in keeping all rows or all columns.</font>
 
 
-```{r}
+
+```{.r .colsel}
 my_matrix[c(TRUE, FALSE), ]
+```
+
+```
+##      col1 col2 col3
+## row1    1    2    8
+## row3    8   27  267
 ```
 <br>
 
 ##### Subsetting a data frame can be done similarly as subsetting a matrix. In addition, one may supply only one 1-dimensional index to subset a data frame. In this case, R will treat the data frame as a list with each column is an element in the list.
 
-```{r}
+
+```{.r .colsel}
 # recall a data frame created from above: *meta.data*
 meta.data
+```
+
+```
+##   patients_name disease_stage Family_history patients_age BRCA
+## 1      Patient1        Stage1              Y           31  YES
+## 2      Patient2        Stage2              N           40   NO
+## 3      Patient3        Stage2              Y           39  YES
+## 4      Patient4        Stage3              N           50  YES
+## 5      Patient5        Stage1              Y           45  YES
+## 6      Patient6        Stage4              Y           65   NO
+```
+
+```{.r .colsel}
 # subset the data frame similarly to a matrix
 meta.data[c(TRUE, FALSE, FALSE, TRUE),]
+```
 
+```
+##   patients_name disease_stage Family_history patients_age BRCA
+## 1      Patient1        Stage1              Y           31  YES
+## 4      Patient4        Stage3              N           50  YES
+## 5      Patient5        Stage1              Y           45  YES
+```
+
+```{.r .colsel}
 # subset the data frame using one vector
 meta.data[c("patients_age", "disease_stage")]
+```
+
+```
+##   patients_age disease_stage
+## 1           31        Stage1
+## 2           40        Stage2
+## 3           39        Stage2
+## 4           50        Stage3
+## 5           45        Stage1
+## 6           65        Stage4
 ```
 
 <br>
@@ -177,20 +323,56 @@ meta.data[c("patients_age", "disease_stage")]
 
 ##### **[[** is similar to **[**, except that it returns the content of the element.
 
-```{r}
+
+```{.r .colsel}
 # recall my_list
 my_list
+```
+
+```
+## $Ranking
+## [1] 1 2 3 4 5
+## 
+## $ID
+## [1] "a"
+## 
+## $Test
+## [1]  TRUE FALSE FALSE
+## 
+## $Score
+## [1]   3.2 103.0  82.3
+```
+
+```{.r .colsel}
 # comparing [[ with [ in subsetting a list
 my_list[[1]]
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+```{.r .colsel}
 my_list[1]
 ```
 
-`r colFmt("[[ is very useful when working with a list. Because when [ is applied to a list, it always returns a list. While [[ returns the contents of the list. [[ can only extrac/return one element, so it only accept one integer/string as input.", 'red')`
+```
+## $Ranking
+## [1] 1 2 3 4 5
+```
+
+<font color='red'>[[ is very useful when working with a list. Because when [ is applied to a list, it always returns a list. While [[ returns the contents of the list. [[ can only extrac/return one element, so it only accept one integer/string as input.</font>
 
 Because data frames are implemented as lists of columns, one may use [[ to extract a column from data frames.
 
-```{r}
+
+```{.r .colsel}
 meta.data[["disease_stage"]]
+```
+
+```
+## [1] Stage1 Stage2 Stage2 Stage3 Stage1 Stage4
+## Levels: Stage2 Stage1 Stage3 Stage4
 ```
 
 
@@ -198,11 +380,24 @@ meta.data[["disease_stage"]]
 
 ##### **$** is a shorthand for **[[** combined with character subsetting.
 
-```{r}
+
+```{.r .colsel}
 # subsetting a list using $ 
 my_list$Score
+```
+
+```
+## [1]   3.2 103.0  82.3
+```
+
+```{.r .colsel}
 # subsetting a data frame using
 meta.data$disease_stage
+```
+
+```
+## [1] Stage1 Stage2 Stage2 Stage3 Stage1 Stage4
+## Levels: Stage2 Stage1 Stage3 Stage4
 ```
 
 <br>
@@ -211,20 +406,61 @@ meta.data$disease_stage
 
 We have seen some examples of simplying vs. preserving subsetting, for example:
 
-```{r}
+
+```{.r .colsel}
 # simplifying subsetting
 my_list[[1]]
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+```{.r .colsel}
 # preserving subsetting
 my_list[1]
+```
+
+```
+## $Ranking
+## [1] 1 2 3 4 5
 ```
 
 Basically, simplying subsetting returns the simplest possible data structure that can represent the output. While preserving subsetting keeps the structure of the output as the same as the input. In the above example, [[ simplifies the output to a vector, while [ keeps the output as a list.
 
 Because the syntax of carrying out simplifying and preserving subsetting differs depending on the data structure, the table below provides the information for the most basic data structure.
 
-```{r, echo=FALSE}
-kable(data.frame(Simplifying=c("x[[1]]", "x[[1]]", "x[1:3, drop=T]", "x[, 1] or x[[1]]"), Preserving=c("x[1]", "x[1]", "x[1:3]", "x[, 1, drop=F] or x[1]"), row.names=c("Vector", "List", "Factor", "Data frame"), stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
-```
+<table class="table table-striped" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Simplifying </th>
+   <th style="text-align:center;"> Preserving </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Vector </td>
+   <td style="text-align:center;"> x[[1]] </td>
+   <td style="text-align:center;"> x[1] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> List </td>
+   <td style="text-align:center;"> x[[1]] </td>
+   <td style="text-align:center;"> x[1] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Factor </td>
+   <td style="text-align:center;"> x[1:3, drop=T] </td>
+   <td style="text-align:center;"> x[1:3] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Data frame </td>
+   <td style="text-align:center;"> x[, 1] or x[[1]] </td>
+   <td style="text-align:center;"> x[, 1, drop=F] or x[1] </td>
+  </tr>
+</tbody>
+</table>
 
 ## CHALLENGES
 
@@ -240,20 +476,45 @@ Topic 3. Import and export data in R
 
 ##### R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
-```{r}
+
+```{.r .colsel}
 # There is a very convenient way to read files from the internet.
 data1 <- read.table(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 # To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session.
 download.file("https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", "./raw_counts.txt")
 data1 <- read.table(file="./raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
-
 ```
 
 To check what type of object *data1* is in and take a look at the beginning part of the data.
-```{r}
+
+```{.r .colsel}
 is.data.frame(data1)
+```
+
+```
+## [1] TRUE
+```
+
+```{.r .colsel}
 head(data1)
+```
+
+```
+##            C61  C62  C63  C64  C91  C92  C93 C94 I561 I562 I563 I564 I591 I592
+## AT1G01010  322  346  256  396  372  506  361 342  638  488  440  479  770  430
+## AT1G01020  149   87  162  144  189  169  147 108  163  141  119  147  182  156
+## AT1G01030   15   32   35   22   24   33   21  35   18    8   54   35   23    8
+## AT1G01040  687  469  568  651  885  978  794 862  799  769  725  715  811  567
+## AT1G01046    1    1    5    4    5    3    0   2    4    3    1    0    2    8
+## AT1G01050 1447 1032 1083 1204 1413 1484 1138 938 1247 1516  984 1044 1374 1355
+##           I593 I594 I861 I862 I863 I864 I891 I892 I893 I894
+## AT1G01010  656  467  143  453  429  206  567  458  520  474
+## AT1G01020  153  177   43  144  114   50  161  195  157  144
+## AT1G01030   16   24   42   17   22   39   26   28   39   30
+## AT1G01040  831  694  345  575  605  404  735  651  725  591
+## AT1G01046    8    1    0    4    0    3    5    7    0    5
+## AT1G01050 1437 1577  412 1338 1051  621 1434 1552 1248 1186
 ```
 
 
@@ -269,7 +530,8 @@ head(data1)
 
 <br>
 
-```{r}
+
+```{.r .colsel}
 # We are going to read a file over the internet by providing the url of the file.
 data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.csv", stringsAsFactors=F)
 
@@ -277,11 +539,29 @@ data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/cours
 head(data2)
 ```
 
+```
+##            C61  C62  C63  C64  C91  C92  C93 C94 I561 I562 I563 I564 I591 I592
+## AT1G01010  322  346  256  396  372  506  361 342  638  488  440  479  770  430
+## AT1G01020  149   87  162  144  189  169  147 108  163  141  119  147  182  156
+## AT1G01030   15   32   35   22   24   33   21  35   18    8   54   35   23    8
+## AT1G01040  687  469  568  651  885  978  794 862  799  769  725  715  811  567
+## AT1G01046    1    1    5    4    5    3    0   2    4    3    1    0    2    8
+## AT1G01050 1447 1032 1083 1204 1413 1484 1138 938 1247 1516  984 1044 1374 1355
+##           I593 I594 I861 I862 I863 I864 I891 I892 I893 I894
+## AT1G01010  656  467  143  453  429  206  567  458  520  474
+## AT1G01020  153  177   43  144  114   50  161  195  157  144
+## AT1G01030   16   24   42   17   22   39   26   28   39   30
+## AT1G01040  831  694  345  575  605  404  735  651  725  591
+## AT1G01046    8    1    0    4    0    3    5    7    0    5
+## AT1G01050 1437 1577  412 1338 1051  621 1434 1552 1248 1186
+```
+
 <br>
 
 ##### R base function write.table() can be used to export data to a file.
 
-```{r}
+
+```{.r .colsel}
 # To write to a file called "output.txt" in your current working directory.
 write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col.names=T)
 ```
@@ -377,35 +657,103 @@ Topic 5. Functions in R
 ====================================================
 #### Invoking a function by its name, followed by the parenthesis and zero or more arguments.
 
-```{r}
+
+```{.r .colsel}
 # to find out the current working directory
 getwd()
+```
 
+```
+## [1] "/home/joshi/Desktop/work/workshops/2021-June-Introduction-to-R-for-Bioinformatics/R"
+```
+
+```{.r .colsel}
 # to set a different working directory, use setwd
 #setwd("/Users/jli/Desktop")
 
 # to list all objects in the environment
 ls()
+```
 
+```
+##  [1] "a"                     "b"                     "brca1_expressed"      
+##  [4] "col1"                  "col2"                  "col3"                 
+##  [7] "colFmt"                "data1"                 "data2"                
+## [10] "disease_stage"         "expression.data"       "Family_history"       
+## [13] "gene"                  "gene_expression"       "gene_names"           
+## [16] "hello"                 "her2_expressed"        "her2_expression_level"
+## [19] "md2"                   "meta.data"             "my_data"              
+## [22] "my_list"               "my_matrix"             "nums"                 
+## [25] "patients_age"          "patients_name"
+```
+
+```{.r .colsel}
 # to create a vector from 2 to 3, using increment of 0.1
 seq(2, 3, by=0.1)
+```
 
+```
+##  [1] 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0
+```
+
+```{.r .colsel}
 # to create a vector with repeated elements
 rep(1:3, times=3)
-rep(1:3, each=3)
+```
 
+```
+## [1] 1 2 3 1 2 3 1 2 3
+```
+
+```{.r .colsel}
+rep(1:3, each=3)
+```
+
+```
+## [1] 1 1 1 2 2 2 3 3 3
+```
+
+```{.r .colsel}
 # to get help information on a function in R: ?function.name
 ?seq
 ?sort
 ?rep
+```
 
-```  
-
-##### `r colFmt("One useful function to find out information on an R object: str(). It compactly display the internal structure of an R object.", 'red')`  
+##### <font color='red'>One useful function to find out information on an R object: str(). It compactly display the internal structure of an R object.</font>  
 
 
-```{r}
+
+```{.r .colsel}
 str(data2)
+```
+
+```
+## 'data.frame':	33602 obs. of  24 variables:
+##  $ C61 : int  322 149 15 687 1 1447 2667 297 0 74 ...
+##  $ C62 : int  346 87 32 469 1 1032 2472 226 0 79 ...
+##  $ C63 : int  256 162 35 568 5 1083 2881 325 0 138 ...
+##  $ C64 : int  396 144 22 651 4 1204 2632 341 0 85 ...
+##  $ C91 : int  372 189 24 885 5 1413 5120 199 0 68 ...
+##  $ C92 : int  506 169 33 978 3 1484 6176 180 0 41 ...
+##  $ C93 : int  361 147 21 794 0 1138 7088 195 0 110 ...
+##  $ C94 : int  342 108 35 862 2 938 6810 107 0 81 ...
+##  $ I561: int  638 163 18 799 4 1247 2258 377 0 72 ...
+##  $ I562: int  488 141 8 769 3 1516 1808 534 0 76 ...
+##  $ I563: int  440 119 54 725 1 984 2279 300 0 184 ...
+##  $ I564: int  479 147 35 715 0 1044 2299 223 0 156 ...
+##  $ I591: int  770 182 23 811 2 1374 4755 298 0 96 ...
+##  $ I592: int  430 156 8 567 8 1355 3128 318 0 70 ...
+##  $ I593: int  656 153 16 831 8 1437 4419 397 0 77 ...
+##  $ I594: int  467 177 24 694 1 1577 3726 373 0 77 ...
+##  $ I861: int  143 43 42 345 0 412 1452 86 0 174 ...
+##  $ I862: int  453 144 17 575 4 1338 1516 266 0 113 ...
+##  $ I863: int  429 114 22 605 0 1051 1455 281 0 69 ...
+##  $ I864: int  206 50 39 404 3 621 1429 164 0 176 ...
+##  $ I891: int  567 161 26 735 5 1434 3867 230 0 69 ...
+##  $ I892: int  458 195 28 651 7 1552 4718 270 0 80 ...
+##  $ I893: int  520 157 39 725 0 1248 4580 220 0 81 ...
+##  $ I894: int  474 144 30 591 5 1186 3575 229 0 62 ...
 ```
 
 
@@ -424,17 +772,21 @@ The basic structure of an *if...else* statement is
 
 Two examples of *if...else* statement
 
-```{r}
 
+```{.r .colsel}
 Temperature <- 30
 
 if (Temperature < 32) {
   print("Very cold")
 }
-
 ```
 
-```{r}
+```
+## [1] "Very cold"
+```
+
+
+```{.r .colsel}
 # recall gene_expression, we are going to design a *if...else* statement to decide treatment plans based on gene expression.
 
 if (gene_expression["ESR1"] > 0) {
@@ -446,11 +798,15 @@ if (gene_expression["ESR1"] > 0) {
 } else {
   print("Treatment plan 4")
 }
+```
 
+```
+## [1] "Treatment plan 2"
 ```
 
 Save your workspace so we can load it for day 3:
-```{r}
+
+```{.r .colsel}
 save.image("day2.RData")
 ```
 

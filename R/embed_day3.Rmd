@@ -1,6 +1,7 @@
 ---
 output:
-    html_document
+    html_document:
+        keep_md: TRUE
 ---
 
 <script src="../assets/js/quiz.js"></script>
