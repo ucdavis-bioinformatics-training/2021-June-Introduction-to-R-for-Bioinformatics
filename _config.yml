@@ -22,7 +22,7 @@ navigation:
 
   - heading: Introduction to R
   - title: Introduction to R Day 1
-    url: R/embed_day1
+    url: R/Intro2R_day1
   - title: Introduction to R Day 2
     url: R/embed_day2
   - title: Introduction to R Day 3
