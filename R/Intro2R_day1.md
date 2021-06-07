@@ -1384,10 +1384,6 @@ submitButton3.addEventListener('click', function() {showResults(myQuestions3, qu
 </div>
 
 
-
-
-</div>
-
 <script>
 
 // add bootstrap table styles to pandoc tables
