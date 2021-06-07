@@ -26,7 +26,7 @@ navigation:
   - title: Introduction to R Day 2
     url: R/Intro2R_day2
   - title: Introduction to R Day 3
-    url: R/embed_day3
+    url: R/Intro2R_day3
 
   - heading: ETC
   - title: Closing thoughts
