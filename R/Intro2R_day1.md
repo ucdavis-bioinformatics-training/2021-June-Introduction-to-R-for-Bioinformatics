@@ -21,8 +21,6 @@ background-color: lightyellow;
 <P style="page-break-before: always">
 
 
-<!--html_preserve--><!DOCTYPE html>
-
 <html>
 
 <head>
@@ -1430,7 +1428,5 @@ $(document).ready(function () {
   })();
 </script>
 
-</body>
-</html><!--/html_preserve-->
 
 
