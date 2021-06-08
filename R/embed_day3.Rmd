@@ -40,6 +40,8 @@ library(dplyr)
 library(kableExtra)
 ```
 
+# Intro to R Day 3
+
 ---
 
 Load your day 2 workspace data:
@@ -48,7 +50,7 @@ load("day2.RData")
 ```
 
 
-#### Loop structure
+### Loops
 
 In programming, it is common that one has to do one set of specific operation on a sequence of elements. In this case, *for* loop is very useful to achieve the goal.
 
@@ -94,6 +96,8 @@ while (i <= dim(my_matrix)[1]){
 <br>
 
 ---
+
+### The "apply" family of functions
 
 #### A few useful functions: apply(), lapply(), sapply(), and tapply() to replace for loop
 
@@ -159,7 +163,8 @@ head(iris)
 tapply(iris$Sepal.Length, iris$Species, summary)
 ```
 
-#### Write one's own functions
+
+### User defined functions
 
 Even though there are a lot of R packages available, there are always situations where one might have to write one's own function to accomplish some very specific goals. Functions are defined by code with a specific format:
 

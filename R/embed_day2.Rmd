@@ -40,6 +40,8 @@ library(dplyr)
 library(kableExtra)
 ```
 
+# Intro to R Day 2
+
 ---
 
 Load your day 1 workspace data:
@@ -47,8 +49,8 @@ Load your day 1 workspace data:
 load("day1.RData")
 ```
 
-
-#### Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).
+### Lists
+#### A list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).
 
 ##### A list is constructed using the function list().
 
@@ -73,7 +75,7 @@ str(my_list)
 length(my_list)
 ```
 
-#### Subsetting data
+### Subsetting data
 
 #### Subsetting allows one to access the piece of data of interest. When combinded with assignment, subsetting can modify selected pieces of data. The operators that can be used to subset data are: [, $, and [[.
 
@@ -173,7 +175,7 @@ meta.data[c("patients_age", "disease_stage")]
 
 <br>
 
-#### Subsetting operators: **[[** and **$**
+### Subsetting operators: **[[** and **$**
 
 ##### **[[** is similar to **[**, except that it returns the content of the element.
 
@@ -454,4 +456,6 @@ Save your workspace so we can load it for day 3:
 save.image("day2.RData")
 ```
 
+
+## HOMEWORK
 

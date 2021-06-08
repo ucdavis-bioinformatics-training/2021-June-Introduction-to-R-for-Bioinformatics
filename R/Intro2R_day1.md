@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2021-06-07"
+date: "2021-06-08"
 output:
     html_document:
         keep_md: TRUE
@@ -20,6 +20,8 @@ background-color: lightyellow;
 
 <P style="page-break-before: always">
 
+
+<!--html_preserve--><!DOCTYPE html>
 
 <html>
 
@@ -1107,7 +1109,7 @@ submitButton2 = document.getElementById('submit2');
 
 myQuestions2 = [
   {
-    question: "Try to add a new 7th element to the disease_stage factor. When the new element does not match any of the levels of the factor, what will happen?",
+    question: "Create a new factor with levels specified. What happens when the factor contains elements that are not included in the levels?",
     answers: {
       a: "A new level will be added to the factor",
       b: "A new element will be added to the factor that is an NA",
@@ -1362,7 +1364,7 @@ myQuestions3 = [
     correctAnswer: "a"
   },
   {
-    question: "Multiply my_matrix by itself, sum the columns, and then use the 'mean' function to find the mean:",
+    question: "Multiply my_matrix by itself, sum each column, and then use the 'mean' function to find the mean:",
     answers: {
       a: "24799.33",
       b: "24797.33",
@@ -1383,6 +1385,10 @@ submitButton3.addEventListener('click', function() {showResults(myQuestions3, qu
 </div>
 </div>
 
+
+
+
+</div>
 
 <script>
 
@@ -1424,5 +1430,7 @@ $(document).ready(function () {
   })();
 </script>
 
+</body>
+</html><!--/html_preserve-->
 
 

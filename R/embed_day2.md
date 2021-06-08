@@ -24,6 +24,8 @@ pre, code {
 
 
 
+# Intro to R Day 2
+
 ---
 
 Load your day 1 workspace data:
@@ -33,7 +35,8 @@ load("day1.RData")
 ```
 
 
-#### Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).
+### Lists
+#### A list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).
 
 ##### A list is constructed using the function list().
 
