@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2021-06-07"
+date: "2021-06-09"
 output:
     html_document:
         keep_md: TRUE
@@ -20,6 +20,8 @@ background-color: lightyellow;
 
 <P style="page-break-before: always">
 
+
+<!--html_preserve--><!DOCTYPE html>
 
 <html>
 
@@ -475,11 +477,15 @@ pre, code {
   overflow-x:scroll auto
 }
 </style>
+<div id="intro-to-r-day-2" class="section level1">
+<h1>Intro to R Day 2</h1>
 <hr />
 <p>Load your day 1 workspace data:</p>
 <pre class="r colsel"><code>load(&quot;day1.RData&quot;)</code></pre>
-<div id="lists-a-list-is-an-ordered-collection-of-objects-which-can-be-any-type-of-r-objects-vectors-matrices-data-frames-even-lists." class="section level4">
-<h4>Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).</h4>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
+<div id="a-list-is-an-ordered-collection-of-objects-which-can-be-any-type-of-r-objects-vectors-matrices-data-frames-even-lists." class="section level4">
+<h4>A list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).</h4>
 <div id="a-list-is-constructed-using-the-function-list." class="section level5">
 <h5>A list is constructed using the function list().</h5>
 <pre class="r colsel"><code>my_list &lt;- list(1:5, &quot;a&quot;, c(TRUE, FALSE, FALSE), c(3.2, 103.0, 82.3))
@@ -520,9 +526,9 @@ length(my_list)</code></pre>
 <pre><code>## [1] 4</code></pre>
 </div>
 </div>
-<div id="subsetting-data" class="section level4">
-<h4>Subsetting data</h4>
 </div>
+<div id="subsetting-data" class="section level3">
+<h3>Subsetting data</h3>
 <div id="subsetting-allows-one-to-access-the-piece-of-data-of-interest.-when-combinded-with-assignment-subsetting-can-modify-selected-pieces-of-data.-the-operators-that-can-be-used-to-subset-data-are-and-." class="section level4">
 <h4>Subsetting allows one to access the piece of data of interest. When combinded with assignment, subsetting can modify selected pieces of data. The operators that can be used to subset data are: [, $, and [[.</h4>
 <div id="first-we-are-going-to-talk-about-subsetting-data-using-which-is-the-most-commonly-used-operator.-we-will-start-by-looking-at-vectors-and-talk-about-four-ways-to-subset-a-vector." class="section level5">
@@ -623,8 +629,9 @@ meta.data[c(&quot;patients_age&quot;, &quot;disease_stage&quot;)]</code></pre>
 <p><br></p>
 </div>
 </div>
-<div id="subsetting-operators-and" class="section level4">
-<h4>Subsetting operators: <strong>[[</strong> and <strong>$</strong></h4>
+</div>
+<div id="subsetting-operators-and" class="section level3">
+<h3>Subsetting operators: <strong>[[</strong> and <strong>$</strong></h3>
 <div id="is-similar-to-except-that-it-returns-the-content-of-the-element." class="section level5">
 <h5><strong>[[</strong> is similar to <strong>[</strong>, except that it returns the content of the element.</h5>
 <pre class="r colsel"><code># recall my_list
@@ -743,6 +750,7 @@ x[, 1, drop=F] or x[1]
 <p>Using the built-in dataset <strong>iris</strong>, first subset the dataframe keeping only those rows where the sepal length is greater than 6. Then find the total number for each Species in that subset.</p>
 <p>Using <strong>iris</strong>, remove the width columns and then create a new dataframe with the Species and the sum of the rows.</p>
 <hr />
+</div>
 </div>
 <div id="topic-3.-import-and-export-data-in-r" class="section level1">
 <h1>Topic 3. Import and export data in R</h1>
@@ -978,6 +986,11 @@ if (gene_expression[&quot;ESR1&quot;] &gt; 0) {
 <pre><code>## [1] &quot;Treatment plan 2&quot;</code></pre>
 <p>Save your workspace so we can load it for day 3:</p>
 <pre class="r colsel"><code>save.image(&quot;day2.RData&quot;)</code></pre>
+</div>
+<div id="homework" class="section level2">
+<h2>HOMEWORK</h2>
+<p>Using the state.x77 built-in dataset, find the states whose population (in 1000’s) is greater than 950 AND whose High School Graduation Rate is less than 40%.</p>
+<p>Construct a list with three elements: 1. A vector of numbers 1 through 15 in increments of 0.2 2. A 5x5 matrix using the first 25 letters of the alphabet. (Hint: look at built-in constants) 3. The first 10 elements of the built-in data frame “mtcars”.</p>
 </div>
 </div>
 

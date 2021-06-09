@@ -34,7 +34,6 @@ Load your day 1 workspace data:
 load("day1.RData")
 ```
 
-
 ### Lists
 #### A list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames, even lists).
 
@@ -108,7 +107,7 @@ length(my_list)
 ## [1] 4
 ```
 
-#### Subsetting data
+### Subsetting data
 
 #### Subsetting allows one to access the piece of data of interest. When combinded with assignment, subsetting can modify selected pieces of data. The operators that can be used to subset data are: [, $, and [[.
 
@@ -322,7 +321,7 @@ meta.data[c("patients_age", "disease_stage")]
 
 <br>
 
-#### Subsetting operators: **[[** and **$**
+### Subsetting operators: **[[** and **$**
 
 ##### **[[** is similar to **[**, except that it returns the content of the element.
 
@@ -813,4 +812,13 @@ Save your workspace so we can load it for day 3:
 save.image("day2.RData")
 ```
 
+
+## HOMEWORK
+
+Using the state.x77 built-in dataset, find the states whose population (in 1000's) is greater than 950 AND whose High School Graduation Rate is less than 40%.
+
+Construct a list with three elements:
+1. A vector of numbers 1 through 15 in increments of 0.2
+2. A 5x5 matrix using the first 25 letters of the alphabet. (Hint: look at built-in constants)
+3. The first 10 elements of the built-in data frame "mtcars".
 
