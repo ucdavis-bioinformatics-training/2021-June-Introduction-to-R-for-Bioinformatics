@@ -990,7 +990,12 @@ if (gene_expression[&quot;ESR1&quot;] &gt; 0) {
 <div id="homework" class="section level2">
 <h2>HOMEWORK</h2>
 <p>Using the state.x77 built-in dataset, find the states whose population (in 1000’s) is greater than 950 AND whose High School Graduation Rate is less than 40%.</p>
-<p>Construct a list with three elements: 1. A vector of numbers 1 through 15 in increments of 0.2 2. A 5x5 matrix using the first 25 letters of the alphabet. (Hint: look at built-in constants) 3. The first 10 elements of the built-in data frame “mtcars”.</p>
+<p>Construct a list with three elements:</p>
+<ol style="list-style-type: decimal">
+<li>A vector of numbers 1 through 15 in increments of 0.2</li>
+<li>A 5x5 matrix using the first 25 letters of the alphabet. (Hint: look at built-in constants)</li>
+<li>The first 10 elements of the built-in data frame “mtcars”.</li>
+</ol>
 </div>
 </div>
 
