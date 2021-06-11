@@ -279,58 +279,9 @@ Calculate the quantiles of each samples.
 apply(data3, 2, quantile)
 ```
 
-
 ---
 
-Topic 7. Simple data visulization in R
-====================================================
-
-Scatter plot and line plot can be produced using the function plot().
-
-```{r}
-x <- c(1:50)
-y <- 1 + sqrt(x)/2
-plot(x,y)
-
-plot(x,y, type="l")
-
-# plot both the points and lines
-## first plot points
-plot(x,y)
-lines(x,y, type="l")
-## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
-
-```
-
-
-boxplot() can be used to summarize data.
-
-```{r}
-boxplot(data3, xlab="Sample ID", ylab="Raw Counts")
-```
-
-```{r}
-x <- rnorm(1000)
-boxplot(x)
-```
-
-hist() can be used to create histograms of data.
-```{r}
-hist(x)
-
-# use user defined break points
-hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
-```
-
-```{r}
-# clear plotting device/area
-dev.off()
-```
-
-
----
-
-Topic 8. Install packages in R
+Topic 7. Install packages in R
 ====================================================
 
 ##### Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
@@ -374,6 +325,88 @@ library(devtools)
 install_github("stephenturner/qqman")
 ```
 
+
+
+---
+
+Topic 8. Simple data visulization in R
+====================================================
+
+Scatter plot and line plot can be produced using the function plot().
+
+```{r}
+x <- c(1:50)
+y <- 1 + sqrt(x)/2
+plot(x,y)
+
+plot(x,y, type="l")
+
+# plot both the points and lines
+## first plot points
+plot(x,y)
+lines(x,y, type="l")
+## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
+
+```
+
+
+boxplot() can be used to summarize data.
+
+```{r}
+boxplot(data3, xlab="Sample ID", ylab="Raw Counts")
+```
+
+```{r}
+x <- rnorm(1000)
+boxplot(x)
+```
+
+hist() can be used to create histograms of data.
+```{r}
+hist(x)
+
+# use user defined break points
+hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
+
+hist(x, breaks=100)
+hist(x, breaks=100, main="histogram of rnorm(1000)")
+hist(x, breaks=100, main="histogram of rnorm(1000)",ylab="values",ylim=c(0,40))
+```
+
+```{r}
+# clear plotting device/area
+dev.off()
+```
+
+### Formulas and reshape2
+
+You can also use "formula notation" to plot data. The simplest form of formula notation for plotting is "y ~ x", which means plot y as a function of x.
+
+```{r}
+boxplot(mpg ~ cyl, data=mtcars)
+```
+
+You can also plot y as a function of two variables.
+
+```{r}
+boxplot(mpg ~ cyl + gear, data=mtcars)
+```
+
+
+A useful package for reformatting data to use in plots is **reshape2**. Let's install the reshape2 package:
+
+```{r}
+install.packages("reshape2")
+```
+
+The main function used in reshape2 is the **melt** function. It basically reformats the input data so that each row is single observation (i.e. measured value).
+
+```{r}
+library(reshape2)
+d2 = data.frame(genes=rownames(data2), data2)
+d2melt = melt(d2, id.vars = "genes")
+boxplot(value ~ variable, data=d2melt)
+```
 
 
 ---

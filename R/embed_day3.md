@@ -151,25 +151,25 @@ lapply(1:dim(data3)[1], function(x){sum(data3[x,])})
 
 ```
 ## [[1]]
-## [1] 0.06201155
+## [1] -2.886366
 ## 
 ## [[2]]
-## [1] -5.559323
+## [1] -1.218986
 ## 
 ## [[3]]
-## [1] -3.540024
+## [1] -2.660326
 ## 
 ## [[4]]
-## [1] -4.56483
+## [1] -1.896081
 ## 
 ## [[5]]
-## [1] -0.2144674
+## [1] -1.100103
 ## 
 ## [[6]]
-## [1] 4.154387
+## [1] 2.290769
 ## 
 ## [[7]]
-## [1] 2.237189
+## [1] -0.7994981
 ```
 
 ```{.r .colsel}
@@ -178,8 +178,7 @@ apply(data3, MARGIN=1, sum)
 ```
 
 ```
-## [1]  0.06201155 -5.55932253 -3.54002380 -4.56483039 -0.21446740  4.15438732
-## [7]  2.23718887
+## [1] -2.8863659 -1.2189857 -2.6603263 -1.8960809 -1.1001033  2.2907694 -0.7994981
 ```
 
 ```{.r .colsel}
@@ -195,11 +194,15 @@ lapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] -1.207527
+## [1] NaN
 ## 
 ## [[2]]
 ## [1] NaN
@@ -214,10 +217,10 @@ lapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))})
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.618507
+## [1] 0.3599814
 ## 
 ## [[7]]
-## [1] 0.3497026
+## [1] NaN
 ```
 
 ##### The function sapply() works like function lapply(), but tries to simplify the output to the simplest data structure possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -238,10 +241,14 @@ sapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1] -1.2075274        NaN        NaN        NaN        NaN  0.6185070  0.3497026
+## [1]       NaN       NaN       NaN       NaN       NaN 0.3599814       NaN
 ```
 
 ##### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -258,11 +265,15 @@ sapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] -1.207527
+## [1] NaN
 ## 
 ## [[2]]
 ## [1] NaN
@@ -277,10 +288,10 @@ sapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))}, simplify=FALSE)
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.618507
+## [1] 0.3599814
 ## 
 ## [[7]]
-## [1] 0.3497026
+## [1] NaN
 ```
 
 #### The function tapply() applys a function to each subset of a vector based on a second vector of factors.
@@ -485,9 +496,9 @@ apply(data3, 2, mean)
 
 ```
 ##          V1          V2          V3          V4          V5          V6 
-## -0.53190648  0.10985395 -0.34780143  0.42192082 -0.38358330 -0.06082095 
+## -0.11273412 -0.52499231 -0.22905701  0.08174668 -0.22514494 -0.28257656 
 ##          V7 
-## -0.26838496
+##  0.11124528
 ```
 
 Calculate the range of expression for each sample.
@@ -498,9 +509,9 @@ apply(data3, 2, range)
 ```
 
 ```
-##              V1         V2         V3         V4         V5        V6        V7
-## [1,] -2.1225589 -0.7515701 -1.9265720 -0.9636053 -1.3522608 -2.042141 -1.856143
-## [2,]  0.6021828  1.3272179  0.4080706  1.7183416  0.6456275  1.822219  1.272969
+##              V1         V2        V3        V4         V5        V6         V7
+## [1,] -1.4029714 -2.2269980 -2.174234 -1.509861 -1.3101019 -2.606843 -0.5962807
+## [2,]  0.7927558  0.8288192  1.307407  1.287283  0.8933946  2.114386  1.2378928
 ```
 
 Calculate the quantiles of each samples.
@@ -511,104 +522,23 @@ apply(data3, 2, quantile)
 ```
 
 ```
-##              V1          V2         V3          V4          V5          V6
-## 0%   -2.1225589 -0.75157007 -1.9265720 -0.96360526 -1.35226078 -2.04214080
-## 25%  -0.8803357 -0.24527545 -0.5412279 -0.09263055 -0.66900312 -1.12471576
-## 50%  -0.6549889 -0.07667717 -0.1321835  0.33251788 -0.58329603  0.09257517
-## 75%   0.1063455  0.38027895  0.1492653  1.02572634 -0.02857375  0.97551591
-## 100%  0.6021828  1.32721793  0.4080706  1.71834156  0.64562747  1.82221868
+##              V1          V2         V3         V4         V5         V6
+## 0%   -1.4029714 -2.22699796 -2.1742337 -1.5098608 -1.3101019 -2.6068426
+## 25%  -0.5866270 -0.90292989 -1.0038216 -0.6332609 -0.7086372 -0.8312352
+## 50%  -0.3347459 -0.40372170  0.2329348  0.3947775 -0.3834737 -0.5296004
+## 75%   0.6645383 -0.03359295  0.5190683  0.8332743  0.3207204  0.3532459
+## 100%  0.7927558  0.82881921  1.3074066  1.2872833  0.8933946  2.1143856
 ##              V7
-## 0%   -1.8561426
-## 25%  -0.8980545
-## 50%  -0.4691785
-## 75%   0.4848832
-## 100%  1.2729688
+## 0%   -0.5962807
+## 25%  -0.4655838
+## 50%  -0.1078468
+## 75%   0.5880596
+## 100%  1.2378928
 ```
-
 
 ---
 
-Topic 7. Simple data visulization in R
-====================================================
-
-Scatter plot and line plot can be produced using the function plot().
-
-
-```{.r .colsel}
-x <- c(1:50)
-y <- 1 + sqrt(x)/2
-plot(x,y)
-```
-
-![](embed_day3_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
-
-```{.r .colsel}
-plot(x,y, type="l")
-```
-
-![](embed_day3_files/figure-html/unnamed-chunk-18-2.png)<!-- -->
-
-```{.r .colsel}
-# plot both the points and lines
-## first plot points
-plot(x,y)
-lines(x,y, type="l")
-```
-
-![](embed_day3_files/figure-html/unnamed-chunk-18-3.png)<!-- -->
-
-```{.r .colsel}
-## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
-```
-
-
-boxplot() can be used to summarize data.
-
-
-```{.r .colsel}
-boxplot(data3, xlab="Sample ID", ylab="Raw Counts")
-```
-
-![](embed_day3_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
-
-
-```{.r .colsel}
-x <- rnorm(1000)
-boxplot(x)
-```
-
-![](embed_day3_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
-
-hist() can be used to create histograms of data.
-
-```{.r .colsel}
-hist(x)
-```
-
-![](embed_day3_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
-
-```{.r .colsel}
-# use user defined break points
-hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
-```
-
-![](embed_day3_files/figure-html/unnamed-chunk-21-2.png)<!-- -->
-
-
-```{.r .colsel}
-# clear plotting device/area
-dev.off()
-```
-
-```
-## null device 
-##           1
-```
-
-
----
-
-Topic 8. Install packages in R
+Topic 7. Install packages in R
 ====================================================
 
 ##### Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
@@ -656,6 +586,149 @@ library(devtools)
 install_github("stephenturner/qqman")
 ```
 
+
+
+---
+
+Topic 8. Simple data visulization in R
+====================================================
+
+Scatter plot and line plot can be produced using the function plot().
+
+
+```{.r .colsel}
+x <- c(1:50)
+y <- 1 + sqrt(x)/2
+plot(x,y)
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+
+```{.r .colsel}
+plot(x,y, type="l")
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-22-2.png)<!-- -->
+
+```{.r .colsel}
+# plot both the points and lines
+## first plot points
+plot(x,y)
+lines(x,y, type="l")
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-22-3.png)<!-- -->
+
+```{.r .colsel}
+## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
+```
+
+
+boxplot() can be used to summarize data.
+
+
+```{.r .colsel}
+boxplot(data3, xlab="Sample ID", ylab="Raw Counts")
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+
+
+```{.r .colsel}
+x <- rnorm(1000)
+boxplot(x)
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
+
+hist() can be used to create histograms of data.
+
+```{.r .colsel}
+hist(x)
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
+
+```{.r .colsel}
+# use user defined break points
+hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-25-2.png)<!-- -->
+
+```{.r .colsel}
+hist(x, breaks=100)
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-25-3.png)<!-- -->
+
+```{.r .colsel}
+hist(x, breaks=100, main="histogram of rnorm(1000)")
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-25-4.png)<!-- -->
+
+```{.r .colsel}
+hist(x, breaks=100, main="histogram of rnorm(1000)",ylab="values",ylim=c(0,40))
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-25-5.png)<!-- -->
+
+
+```{.r .colsel}
+# clear plotting device/area
+dev.off()
+```
+
+```
+## null device 
+##           1
+```
+
+### Formulas and reshape2
+
+You can also use "formula notation" to plot data. The simplest form of formula notation for plotting is "y ~ x", which means plot y as a function of x.
+
+
+```{.r .colsel}
+boxplot(mpg ~ cyl, data=mtcars)
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+
+You can also plot y as a function of two variables.
+
+
+```{.r .colsel}
+boxplot(mpg ~ cyl + gear, data=mtcars)
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
+
+
+A useful package for reformatting data to use in plots is **reshape2**. Let's install the reshape2 package:
+
+
+```{.r .colsel}
+install.packages("reshape2")
+```
+
+```
+## Installing package into '/home/joshi/R/x86_64-pc-linux-gnu-library/4.0'
+## (as 'lib' is unspecified)
+```
+
+The main function used in reshape2 is the **melt** function. It basically reformats the input data so that each row is single observation (i.e. measured value).
+
+
+```{.r .colsel}
+library(reshape2)
+d2 = data.frame(genes=rownames(data2), data2)
+d2melt = melt(d2, id.vars = "genes")
+boxplot(value ~ variable, data=d2melt)
+```
+
+![](embed_day3_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
 
 
 ---
@@ -724,7 +797,7 @@ Working with an R notebook, load the Iris data as we did earlier in this documen
 </tbody>
 </table>
 
-![](embed_day3_files/figure-html/unnamed-chunk-29-1.png)<!-- -->![](embed_day3_files/figure-html/unnamed-chunk-29-2.png)<!-- -->![](embed_day3_files/figure-html/unnamed-chunk-29-3.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-33-1.png)<!-- -->![](embed_day3_files/figure-html/unnamed-chunk-33-2.png)<!-- -->![](embed_day3_files/figure-html/unnamed-chunk-33-3.png)<!-- -->
 
 
 #### <font color='red'>Hints: </font>
